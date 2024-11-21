@@ -1,61 +1,90 @@
-/* Global styles */
-*, *::before, *::after {
+* {
   box-sizing: border-box;
-  font-family: 'Gotham Rounded', sans-serif;
-  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  user-select: none;
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  background: linear-gradient(to right, #00AAFF, #00FF6C);
+  font-family: "Helvetica Neue", sans-serif;
+  margin: 25px;
 }
 
-/* Calculator grid styles */
-.Calculator-grid {
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  min-height: 100vh;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
-}
-
-.Calculator-grid > button {
-  cursor: pointer;
-  font-size: 2rem;
-  border: 1px solid white;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.75);
-}
-
-.Calculator-grid > button:hover {
-  background-color: rgba(255, 255, 255, 0.90);
-}
-
-.span-two {
-  grid-column: span 2;
-}
-
-/* Output display styles */
-.output {
-  grid-column: 1 / -1;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  flex-direction: column;
-  padding: 10px;
-  word-wrap: break-word;
-  word-break: break-all;
-}
-
-.output .previous-operand {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1.5rem;
-}
-
-.output .current-operand {
+.calculator {
+  background: black;
+  border-radius: 50px;
   color: white;
-  font-size: 2.5rem;
+  height:650px;
+  padding: 20px;
+  position: relative;
+  width: 450px;
+}
+
+.top-container {
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.value {
+  font-size: 50px;
+  font-weight: 300;
+  height: 100px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  text-align: right;
+}
+
+.buttons-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.button {
+  align-items: center;
+  background: #333;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  font-size: 30px;
+  height: 50px;
+  justify-content: center;
+  transition: filter 0.3s;
+  width: 50px;
+}
+
+.button.function {
+  color: black;
+  background: #a5a5a5;
+}
+
+.button.operator {
+  background: #f1a33c;
+}
+
+.button.number-0 {
+  border-radius: 55px;
+  grid-column: 1 / span 2;
+  justify-content: flex-start;
+  padding-left: 43px;
+  width: 250px;
+}
+
+.button:active,
+.button:focus {
+  filter: brightness(120%);
+}
+
+.bottom {
+  width: 200px;
+  height: 5px;
+  background: white;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
